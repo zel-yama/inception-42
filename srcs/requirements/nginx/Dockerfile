@@ -4,13 +4,12 @@ FROM debian:bookworm
 RUN apt-get update &&   apt-get install nginx -y 
 
 COPY conf/nginx.conf /etc/nginx/nginx.conf
-RUN apt-get  install openssl \
-                     curl \
+RUN apt-get  install -y openssl \
+             
                      
+RUN mkdir -p /etc/ssl/nginx &&  openssl req -x509 -nodes -days 365 -newkey rsa:2054 -out /etc/ssl/nginx/nginx.crt -keyout \
+/etc/ssl/nginx/nginx.key -subj "/C=MA/ST=khouribga/L=khouribga/O=42/OU=Inception/CN=localhost"
 
+#needed test
 
-RUN mkdir -p /etc/ssl/nginx &&  opnessl req -x509 -nodes -newkey ras:2054 -out /etc/ssl/nginx/nginx.key -kout \
-/etc/ssl/nginx/nginx.crt 
-
-
-ENTRYPOINT ["nginx", "-g", "demoen off "]
+ENTRYPOINT ["nginx", "-g", "demoen off ; "]
