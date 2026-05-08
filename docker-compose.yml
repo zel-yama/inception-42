@@ -2,12 +2,22 @@ version: "5.1.2"
 
 services:
     mariadb:
-        image: mysql
-
+        build: srcs/requirements/mariadb/Dockerfile
         restart: always
         environment:
-            MYSQL_ROOT_PASSWORD: 121
+        -   .env
         volumes:
-           - ./data:/home/zel-yama
+           - myvalumes
         ports:
             - 3306:3306
+        network:
+        -   inception
+    worpress:
+        build: srcs/requirements/worpress/Dockerfile
+        restart: always
+
+        environment:
+        -   .env
+    nginx:
+    
+
