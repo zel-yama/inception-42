@@ -1,22 +1,23 @@
 
 FROM debian:bookworm 
 
-RUN apt-get upgrade -y && apt-get update -y 
+RUN apt-get update  && apt-get upgrade 
 
-RUN apt-get install php \
-                 php-bcmath \
-                 php-curl \
-                 php-imagick \
-                 php-intl \
-                 php-json \
-                 php-mbstring \
-                 php-mysql \
-                 php-xml \
-                 php-zip
+RUN apt-get install -y php   php-mysql \
+                 php-fpm \
+                 curl \
+                 tar
+        
 
-RUN mkdir -p /srv/www/wordpress && chwon www-data /srv/www/wordpress && \
-curl https://wordpress.org/latest.tar.gz \
-&& tar -zxf wordpress.tar.gz  -C /srv/www/wordpress && rm wordpress.tar.gz
+RUN mkdir -p /srv/www/wordpress && chown www-data /srv/www/wordpress && \
+        curl https://wordpress.org/latest.tar.gz -o wordpress.tar.gz \
+        && tar -zxf wordpress.tar.gz  -C /srv/www/wordpress && rm -r wordpress.tar.gz
+RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && chmod +x wp-cli.phar && mv wp-cli.phar /usr/local/bin/wp
 
 
+COPY tools/setUp.sh / 
+
+#RUN ./setUp.sh  
+
+CMD ["php-fpm", "-F"]
 

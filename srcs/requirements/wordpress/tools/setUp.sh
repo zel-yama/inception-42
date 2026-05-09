@@ -10,3 +10,4 @@ wp config  create  --dbname=$DATABASE_NAME \
 wp core install --url=zel-yama.fr.42 --title="the my wordpress site" \
     --admin_user=$WORDPRESS_ADMIN_USER_NAME --admin_password=$WORDPRESS_PASSWORD  
 
+

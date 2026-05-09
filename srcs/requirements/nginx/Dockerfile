@@ -1,7 +1,7 @@
 FROM debian:bookworm
 
  
-RUN apt-get update &&   apt-get install nginx -y 
+RUN apt-get update &&   apt-get install nginx -y && apt-get upgrade 
 
 COPY conf/nginx.conf /etc/nginx/nginx.conf
 RUN apt-get  install -y openssl  
@@ -12,3 +12,4 @@ RUN mkdir -p /etc/ssl/nginx &&  openssl req -x509 -nodes -days 365 -newkey rsa:2
 
 EXPOSE 443
 ENTRYPOINT ["nginx", "-g", "daemon off;  "]
+
