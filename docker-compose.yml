@@ -4,20 +4,45 @@ services:
     mariadb:
         build: srcs/requirements/mariadb/Dockerfile
         restart: always
-        environment:
-        -   .env
-        volumes:
-           - myvalumes
-        ports:
-            - 3306:3306
-        network:
-        -   inception
-    worpress:
-        build: srcs/requirements/worpress/Dockerfile
-        restart: always
-
-        environment:
-        -   .env
-    nginx:
     
+        env_file:
+            - .env
+        volumes:
+           - storage:/val/lib/mysql
+        networks:
+            - inception
+    
+    wordpress:
+        build: srcs/requirements/wordpress/Dockerfile
+    
+        restart: always
+        env_file:
+            - .env
+        
+        depends_on:
+            - mariadb
+        volumes:
+            - storage:/srv/www/wordpress
+        networks:
+            - inception
+    nginx:
+        build: srcs/requirements/nginx/Dockerfile
+        
+        restart: always
+        
+        port:
+            - 443:443
+        networkds:
+            inception
+        
+        depends_on:
+            wordpress
+networks:
+    inception:
+        driver:
+            bridge
+        
+volumes:
+    storage:
+        /var/www/wordpress    
 

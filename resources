@@ -1,3 +1,12 @@
 
 word press 
     https://make.wordpress.org/cli/handbook/how-to/how-to-install/
+    https://humayunahmed8.medium.com/installing-wordpress-using-command-line-interface-cli-d478d346b599
+    https://ubuntu.com/tutorials/install-and-configure-wordpress#6-configure-wordpress-to-connect-to-the-database
+
+
+mariadb:
+    https://mariadb.com/docs/server/mariadb-quickstart-guides/mariadb-connection-troubleshooting-guide
+
+nginx 
+https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-plus/

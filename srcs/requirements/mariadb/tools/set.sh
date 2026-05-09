@@ -12,4 +12,4 @@ mariadb -e "FLUSH PRIVILEGES;"
 
 mariadbmyadmin -u root -p ${MYSQL_ROOT_PASSWORD} shutdown 
 
-exec mariadb_safe
+exec mariadb_safe  #i should put port and op address 
