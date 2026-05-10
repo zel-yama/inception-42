@@ -3,6 +3,7 @@
 #i should check if data create and 
 #i should check config in first config 
 
+
 wp config  create  --dbname=$DATABASE_NAME \
           --dbuser=$MYSQL_USER \
           --dbpass=$MYSQL_PASSWORD \

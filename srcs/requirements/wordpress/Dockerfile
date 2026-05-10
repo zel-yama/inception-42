@@ -17,7 +17,7 @@ RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli
 
 COPY tools/setUp.sh / 
 
-#RUN ./setUp.sh  
+RUN ./setUp.sh  
 
 CMD ["php-fpm", "-F"]
 
