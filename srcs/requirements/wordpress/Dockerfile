@@ -14,10 +14,11 @@ RUN mkdir -p /srv/www/wordpress && chown www-data /srv/www/wordpress && \
         && tar -zxf wordpress.tar.gz  -C /srv/www/wordpress && rm -r wordpress.tar.gz
 RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && chmod +x wp-cli.phar && mv wp-cli.phar /usr/local/bin/wp
 
+WORKDIR  /srv/www/wordpress
 
-COPY tools/setUp.sh / 
+COPY tools/setUp.sh /srv/www/wordpress 
 
-RUN ./setUp.sh  
+ 
 
-CMD ["php-fpm", "-F"]
+CMD ["/bin/bash",  "./setUp.sh"]
 

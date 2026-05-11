@@ -1,17 +1,17 @@
-
 #!/bin/bash
 
 service  mariadb start
 
 mariadb -u root -p${SQL_ROOT_PASSWORD}
+
 mariadb -e "CREATE DATABASE IF NOT EXISTS ${DATABASE_NAME}"
 
-mariadb -e "CREATE USER IF NOT EXISTS ${MYSQL_USER}@% IDNTIFIED BY  ${MYSQL_PASSWORD}"
+mariadb -e "CREATE USER IF NOT EXISTS ${MYSQL_USER}`@``%` IDENTIFIED BY  ${MYSQL_PASSWORD}"
 
-mariadb -e " GRANT ALL PRIVILEGES; "
+mariadb -e " GRANT ALL PRIVILEGES on ${MYSQL_DATABASE} TO ${MYSQL_USER}`@``%` IDENTIFIED BY ${MYSQL_PASSWORD}"
 
 mariadb -e "FLUSH PRIVILEGES;" 
 
-mariadbmyadmin -u root -p${MYSQL_ROOT_PASSWORD} shutdown 
+mysqlmyadmin -u root -p${MYSQL_ROOT_PASSWORD} shutdown 
 
-exec mariadb_safe  #i should put port and op address 
+exec mysql_safe  #i should put port and op address 
