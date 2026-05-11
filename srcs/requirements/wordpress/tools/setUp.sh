@@ -20,3 +20,4 @@ wp user create $WORDPRESS_USER $WORDPRESS_EMAIL_USER --role=editor --user_pass=$
 
 
 
+
