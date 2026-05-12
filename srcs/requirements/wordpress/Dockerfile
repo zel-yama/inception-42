@@ -20,6 +20,6 @@ COPY tools/setUp.sh /srv/www/wordpress
 WORKDIR  /srv/www/wordpress
  
 
-CMD ["/bin/bash",  " ./setUp.sh"]
+CMD ["/bin/bash",  "/srv/www/wordpress/setUp.sh"]
 
 
