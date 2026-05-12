@@ -1,5 +1,4 @@
 version: "3.8"
-
 services:
     mariadb:
         build: srcs/requirements/mariadb/
@@ -35,14 +34,13 @@ services:
         restart: always
         
         ports:
-            - "443:443"
+            - 443:443
         networks:
             - inception
         
         depends_on:
-           - wordpress
-        volumes:
-            - storage:/srv/www/wordpress
+            - wordpress
+    
         
 networks:
     inception:
@@ -54,8 +52,6 @@ volumes:
             type: "none"
             o: "bind"
             device: "/home/zel-yama/data/mariadb"
-   
-volumes:
     storage_wordpress:
         driver_opts:
             type: "none"
