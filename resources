@@ -10,3 +10,7 @@ mariadb:
 
 nginx 
 https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-plus/
+
+docker 
+
+https://docs.docker.com/reference/compose-file/volumes/

@@ -3,7 +3,6 @@
 #i should check if data create and 
 #i should check config in first config 
 
-wp core download 
 
 wp config  create  --allow-root  --dbname=$DATABASE_NAME \
           --dbuser=$MYSQL_USER \

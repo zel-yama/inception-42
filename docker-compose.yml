@@ -1,11 +1,11 @@
-version: "5.1.2"
+version: "3.8"
 
 services:
     mariadb:
         build: srcs/requirements/mariadb/
         restart: always
     
-        contianer_name: mariadb
+        container_name: mariadb
         env_file:
             - .env
         volumes:
@@ -25,7 +25,7 @@ services:
         depends_on:
             - mariadb
         volumes:
-            - storage:/srv/www/wordpress
+            - storage_wordpress:/srv/www/wordpress
         networks:
             - inception
     nginx:
@@ -50,4 +50,14 @@ networks:
         
 volumes:
     storage:
+        driver_opts:
+            type: "none"
+            o: "bind"
+            device: "/home/zel-yama/data/mariadb"
    
+volumes:
+    storage_wordpress:
+        driver_opts:
+            type: "none"
+            o: "bind"
+            device: "/home/zel-yama/data/wordpress"
