@@ -9,6 +9,5 @@ RUN apt-get install mariadb-server -y
 COPY tools/set.sh /
 
 
-CMD ["/bin/bash", "/set.sh"]
-
+ENTRYPOINT ["/bin/bash", "/set.sh"]
 
