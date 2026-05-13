@@ -17,11 +17,12 @@ RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli
 
 WORKDIR  /srv/www/wordpress/wordpress 
 
-COPY tools/setUp.sh .
+COPY ./tools/setUp.sh .
+
 
 
 RUN chmod +x setUp.sh 
 
-#ENTRYPOINT ["bash", "setUp.sh"]
+CMD ["bash", "/srv/www/wordpress/wordpress/setUp.sh"]
 
 

@@ -1,11 +1,12 @@
  
-
 #!/bin/bash
 
 
 sed -i  "s/listen = .*/listen = 9000/g" /etc/php/8.2/fpm/pool.d/www.conf;
 
 until ping -c1 mariadb 2> /dev/null >/dev/null ; do 
+    echo "hello "
+
     sleep 2
     done
 

@@ -1,4 +1,4 @@
-version: "3.8"
+
 services:
     mariadb:
         build: srcs/requirements/mariadb/
@@ -14,12 +14,11 @@ services:
     
     wordpress:
         build: srcs/requirements/wordpress/
+        container_name: wordpress
     
-        restart: always
     
         env_file:
             - .env
-        container_name: wordpress
         
         depends_on:
             - mariadb
@@ -28,11 +27,12 @@ services:
             - storage_wordpress:/srv/www/wordpress
         networks:
             - inception
+        restart: always
     nginx:
         container_name: nginx
+
         build: srcs/requirements/nginx/
         
-        restart: always
         
         ports:
             - 443:443
@@ -41,6 +41,7 @@ services:
         
         depends_on:
             - wordpress
+        restart: always
     
         
 networks:
