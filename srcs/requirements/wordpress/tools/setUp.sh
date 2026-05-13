@@ -1,6 +1,7 @@
  
 #!/bin/bash
 
+cd /srv/www/wordpress/wordpress 
 
 sed -i  "s/listen = .*/listen = 9000/g" /etc/php/8.2/fpm/pool.d/www.conf;
 
