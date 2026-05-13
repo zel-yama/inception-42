@@ -22,6 +22,6 @@ COPY tools/setUp.sh .
 
 RUN chmod +x setUp.sh 
 
-ENTRYPOINT ["bash", "setUp.sh"]
+#ENTRYPOINT ["bash", "setUp.sh"]
 
 
