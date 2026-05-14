@@ -7,7 +7,7 @@ RUN apt-get install mariadb-server -y
 
 
 COPY tools/set.sh /
-RUN chmod +x set.sh
+RUN chmod +x set.sh && bash /set.sh 
 
-ENTRYPOINT ["/bin/bash", "/set.sh"]
+ENTRYPOINT ["mysqld_safe"]
 
