@@ -6,7 +6,8 @@ RUN apt-get update  && apt-get upgrade
 RUN apt-get install -y php   php-mysql \
                  php-fpm \
                  curl \
-                 tar
+                 tar \
+                 iputils-ping 
         
 
 RUN mkdir -p /srv/www/wordpress && chown -R www-data:www-data /srv/www/wordpress && \

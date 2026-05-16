@@ -4,7 +4,7 @@
 
 service  mariadb start;
 
-if [-d "/var/lib/mysql/${DATABASE_NAME}"];
+if [ -d  "/var/lib/mysql/${DATABASE_NAME}" ];
 then
     echo "data base already created" 
 else

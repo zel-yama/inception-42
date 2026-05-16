@@ -5,13 +5,13 @@ cd /srv/www/wordpress/wordpress
 
 sed -i  "s/listen = .*/listen = 9000/g" /etc/php/8.2/fpm/pool.d/www.conf;
 
-until ping -c1 mariadb 2> /dev/null >/dev/null ; do 
+until ping -c1 mariadb  ; do 
     echo "hello "
 
     sleep 2
     done
 
-if [ ! -f wp-config.php ]; then
+if [ !-f wp-config.php ]; then
 
 wp config create --allow-root \
     --dbname=$DATABASE_NAME \
