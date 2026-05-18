@@ -1,7 +1,7 @@
  
 #!/bin/bash
 
-cd /srv/www/wordpress/wordpress 
+cd /srv/www/wordpress/
 
 sed -i  "s/listen = .*/listen = 9000/g" /etc/php/8.2/fpm/pool.d/www.conf;
 
@@ -13,8 +13,11 @@ until ping -c1 mariadb  ; do
 
 if [ ! -f wp-config.php ]; then
 
-touch wp-config.php 
+touch  wp-config.php
+
+
 #connection wp-config.ph is not create config wordpress is not correct 
+wp core dowload --allow-root
 
 wp config create --allow-root \
     --dbname=$DATABASE_NAME \
