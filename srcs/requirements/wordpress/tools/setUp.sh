@@ -11,7 +11,7 @@ until ping -c1 mariadb  ; do
     sleep 2
     done
 
-if [ !-f wp-config.php ]; then
+if [ ! -f wp-config.php ]; then
 
 wp config create --allow-root \
     --dbname=$DATABASE_NAME \
