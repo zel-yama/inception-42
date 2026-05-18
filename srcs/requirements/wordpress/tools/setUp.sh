@@ -13,6 +13,9 @@ until ping -c1 mariadb  ; do
 
 if [ ! -f wp-config.php ]; then
 
+touch wp-config.php 
+#connection wp-config.ph is not create config wordpress is not correct 
+
 wp config create --allow-root \
     --dbname=$DATABASE_NAME \
     --dbuser=$MYSQL_USER \
@@ -25,6 +28,7 @@ wp core install --allow-root \
     --admin_email=$EMAIL_USER_WORDPRESS \
     --admin_user=$WORDPRESS_ADMIN_USER_NAME \
     --admin_password=$WORDPRESS_PASSWORD
+
 
 wp user create --allow-root \
     $WORDPRESS_USER \
