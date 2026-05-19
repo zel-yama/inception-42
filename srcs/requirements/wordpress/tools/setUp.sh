@@ -9,21 +9,24 @@ until ping -c1 mariadb  ; do
     echo "hello "
 
     sleep 2
+    
     done
 
+sleep 3
 if [ ! -f wp-config.php ]; then
 
-touch  wp-config.php
 
 
-#connection wp-config.ph is not create config wordpress is not correct 
-wp core dowload --allow-root
+wp core download --allow-root
+# connection refused
+# and  wp-config.ph is not create config wordpress is not correct 
+echo "here create config " 
 
 wp config create --allow-root \
     --dbname=$DATABASE_NAME \
     --dbuser=$MYSQL_USER \
     --dbpass=$MYSQL_PASSWORD \
-    --dbhost=mariadb
+    --dbhost=mariadb:3306
 
 wp core install --allow-root \
     --url=zel-yama.42.fr \
