@@ -12,7 +12,7 @@ until ping -c1 mariadb  ; do
     
     done
 
-sleep 3
+
 if [ ! -f wp-config.php ]; then
 
 
