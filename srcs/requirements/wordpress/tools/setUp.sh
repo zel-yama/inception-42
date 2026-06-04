@@ -14,13 +14,13 @@ do
     echo "is data base ready " 
     sleep 2
 done
-
+rm wp-config.php
 if [ ! -f wp-config.php ]; then
 
 
 
-wp core download --allow-root
-# connection refused
+#wp core download --allow-root 
+# connection refused # wp-config-sample.php  
 # and  wp-config.ph is not create config wordpress is not correct 
 echo "here create config " 
 
