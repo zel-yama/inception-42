@@ -10,9 +10,9 @@ RUN apt-get install -y php   php-mysql \
                  iputils-ping php-mysqli php-phar php-mbstring php-tokenizer
         
 
-RUN mkdir -p /srv/www/wordpress && chown -R www-data:www-data /srv/www/wordpress && \
-        curl https://wordpress.org/latest.tar.gz -o wordpress.tar.gz \
-        && tar -zxf wordpress.tar.gz --strip-components=1 -C /srv/www/wordpress && rm -r wordpress.tar.gz
+RUN mkdir -p /srv/www/wordpress && chown -R www-data:www-data /srv/www/wordpress 
+      
+       
 RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && chmod +x wp-cli.phar && mv wp-cli.phar /usr/local/bin/wp  
 
 
