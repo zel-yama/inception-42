@@ -5,13 +5,15 @@ cd /srv/www/wordpress/
 
 sed -i  "s/listen = .*/listen = 9000/g" /etc/php/8.2/fpm/pool.d/www.conf;
 
-until ping -c1 mariadb  ; do 
-    echo "hello "
-
+#until ping -c1 mariadb  ; do 
+ #   echo "hello "
+#  sleep 2
+#  done
+until mariadb -hmariadb -u$MYSQL_USER -p$MYSQL_PASSWORD -e "SELECT 1"
+do
+    echo "is data base ready " 
     sleep 2
-    
-    done
-
+done
 
 if [ ! -f wp-config.php ]; then
 

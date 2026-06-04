@@ -1,5 +1,9 @@
 #!/bin/bash
 
+#this should be cmd cuz this run put this in the beluiding of image
+
+# if [ -d "/var/lib/mysql/${DATABASE_NAME}" ]; this wrong cuz file can in differnt place 
+
 
 
 service  mariadb start;
@@ -11,11 +15,11 @@ else
 
 mysql -e "CREATE DATABASE  IF NOT EXISTS  ${DATABASE_NAME}; "
 mysql -e "CREATE USER IF NOT EXISTS '${MYSQL_USER}'@'%' IDENTIFIED BY '${MYSQL_PASSWORD}'; "
-mysql -e "GRANT ALL PRIVILEGES ON ${DATABASE_NAME}.* TO '${MYSQL_USER}'@'%' IDENTIFIED BY '${MYSQL_PASSWORD}';"
+mysql -e "GRANT ALL PRIVILEGES ON ${DATABASE_NAME}.* TO '${MYSQL_USER}'@'%' IDENTIFIED BY '${MYSQL_PASSWORD}';" #THIS worng and indentified is exist
 #mys_ql -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD};"
 mysql -e "FLUSH PRIVILEGES;"
 
-mysqladmin -u${MYSQL_USER} -p${MYSQL_PASSWORD} shutdown 
+mysqladmin -u${MYSQL_USER} -p${MYSQL_PASSWORD} shutdown # this require user root to turn of it 
 
 fi
 
