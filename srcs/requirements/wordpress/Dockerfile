@@ -7,7 +7,8 @@ RUN apt-get install -y php   php-mysql \
                  php-fpm \
                  curl \
                  tar \
-                 iputils-ping php-mysqli php-phar php-mbstring php-tokenizer
+                 iputils-ping php-mysqli php-phar php-mbstring php-tokenizer \
+                php-xml php-zip mariadb-client                                  
         
 
 RUN mkdir -p /srv/www/wordpress && chown -R www-data:www-data /srv/www/wordpress 
