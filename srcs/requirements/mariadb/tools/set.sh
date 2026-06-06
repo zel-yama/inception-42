@@ -5,10 +5,14 @@
 # or my be the error in the creation of data base users 
 # if [ -d "/var/lib/mysql/${DATABASE_NAME}" ]; this wrong cuz file can in differnt place 
 
-
+#is server listen on defualt or not 
+#is server sql work good how i can test it can try local host and then ??
+#i thinks sql server listen on the localhost 
+# i thinks sql 
+# how to know  Check that mariadbd is running and that the socket: '/run/mysqld/mysqld.sock' exists!
 
 service  mariadb start;
-
+#/etc/mysql/mariadb.conf.d/50-server.cnf
 if [ -d  "/var/lib/mysql/${DATABASE_NAME}" ];
 then
     echo "data base already created" 
