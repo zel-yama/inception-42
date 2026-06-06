@@ -14,7 +14,7 @@ then
     echo "data base already created" 
 else
 
-mysql -e "CREATE DATABASE  IF NOT EXISTS  $DATABASE_NAME; "
+mysql -e "CREATE DATABASE  IF NOT EXISTS  ${DATABASE_NAME}; "
 mysql -e "CREATE DATABASE mydb;"
 mysql -e "CREATE USER IF NOT EXISTS 'ZIKO'@'%' IDENTIFIED BY '12345'; "
 mysql -e "GRANT ALL PRIVILEGES ON mydb.* to 'ZIKO'@'%' ;"

@@ -6,10 +6,11 @@ cd /srv/www/wordpress/
 # the error is 
 sed -i  "s/listen = .*/listen = 9000/g" /etc/php/8.2/fpm/pool.d/www.conf;
 
-until mysqladmin -h mariadb -u$MYSQL_USER  ping   ; do 
-   echo "hello "
-    sleep 2
- done
+sleep 5
+# until mysqladmin -h mariadb -u$MYSQL_USER  ping   ; do 
+#    echo "hello "
+#     sleep 2
+#  done
 
 if [ ! -f wp-config.php ]; then
 
