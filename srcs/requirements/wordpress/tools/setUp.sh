@@ -6,7 +6,7 @@ cd /srv/www/wordpress/
 # the error is 
 sed -i  "s/listen = .*/listen = 9000/g" /etc/php/8.2/fpm/pool.d/www.conf;
 
-until mysql -h mariadb -u ${MYSQL_USER} -p3306  ; do 
+until mysqladmin -h mariadb -uZAKA -p ping   ; do 
    echo "hello "
     sleep 2
  done
