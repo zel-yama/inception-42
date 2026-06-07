@@ -6,21 +6,26 @@
 # if [ -d "/var/lib/mysql/${DATABASE_NAME}" ]; this wrong cuz file can in differnt place 
 # sed -i "s|skip-networking|# skip-networking|g" /etc/my.cnf.d/mariadb-server.cnf to do this let mariadb to allow remote connection 
 
-
+#is server listen on defualt or not 
+#is server sql work good how i can test it can try local host and then ??
+#i thinks sql server listen on the localhost 
+# i thinks sql 
+# how to know  Check that mariadbd is running and that the socket: '/run/mysqld/mysqld.sock' exists!
 
 service  mariadb start;
-
+#/etc/mysql/mariadb.conf.d/50-server.cnf
 if [ -d  "/var/lib/mysql/${DATABASE_NAME}" ];
 then
     echo "data base already created" 
 else
 
 mysql -e "CREATE DATABASE  IF NOT EXISTS  ${DATABASE_NAME}; "
-mysql -e "CREATE USER IF NOT EXISTS 'ZIKO' IDENTIFIED BY '12345'; "
-mysql -e "GRANT ALL PRIVILEGES ON data_base.* to 'ZIKO'   ;"
-mysql -e "CREATE USER IF NOT EXISTS '${MYSQL_USER}'@'%' IDENTIFIED BY '${MYSQL_PASSWORD}'; "
-mysql -e "GRANT ALL PRIVILEGES ON ${DATABASE_NAME}.* TO '${MYSQL_USER}'@'%' ;"  #THIS worng and indentified is exist
-#mys_ql -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD};"
+mysql -e "CREATE DATABASE mydb;"
+mysql -e "CREATE USER IF NOT EXISTS 'ZIKO'@'%' IDENTIFIED BY '12345'; "
+mysql -e "GRANT ALL PRIVILEGES ON mydb.* to 'ZIKO'@'%' ;"
+mysql -e "CREATE USER IF NOT EXISTS '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_PASSWORD'; "
+mysql -e "GRANT ALL PRIVILEGES ON '$DATABASE_NAME'.* TO '$MYSQL_USER'@'%' ;"  #THIS worng and indentified is exist
+mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '$MYSQL_ROOT_PASSWORD';"
 mysql -e "FLUSH PRIVILEGES;"
 
 mysqladmin -u${MYSQL_USER} -p${MYSQL_PASSWORD} shutdown # this require user root to turn of it 
