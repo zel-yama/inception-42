@@ -4,6 +4,7 @@
 #there in networks my can create i don't why but connection send user-mysql and @networks name 
 # or my be the error in the creation of data base users 
 # if [ -d "/var/lib/mysql/${DATABASE_NAME}" ]; this wrong cuz file can in differnt place 
+# sed -i "s|skip-networking|# skip-networking|g" /etc/my.cnf.d/mariadb-server.cnf to do this let mariadb to allow remote connection 
 
 
 
