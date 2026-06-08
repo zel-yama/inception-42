@@ -11,12 +11,12 @@ until mysqladmin -h mariadb -u$MYSQL_USER -p$MYSQL_PASSWORD ping   ; do
    echo "hello "
     sleep 2
  done
-rm wp-config.php
+#rm wp-config.php
+wp core download --allow-root 
 if [ ! -f wp-config.php ]; then
 
 #mv wp-config-sample.php wp-config.php 
 
-wp core download --allow-root 
 #sed -i -r "s/database_name_here/${DATABASE_NAME}/g" wp-config.php
 # sed -i -r "s/username_here/${MYSQL_USER}/g" wp-config.php
 # sed -i -r "s/password_here/${MYSQL_PASSWORD}/g" wp-config.php

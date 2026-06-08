@@ -2,6 +2,6 @@
 up:
 	docker compose up -d 
 down:
-	docker compose down  --no-cache 
+	docker compose down  
 build:
 	docker compose build --no-cache

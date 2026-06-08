@@ -12,6 +12,8 @@
 # how to know  Check that mariadbd is running and that the socket: '/run/mysqld/mysqld.sock' exists!
 
 #/etc/mysql/mariadb.conf.d/50-server.cnf
+
+ 
 sleep 4
 echo "new " 
 
@@ -27,7 +29,7 @@ mysql << EOF
 DELETE FROM mysql.user WHERE user='';
 CREATE DATABASE  IF NOT EXISTS  ${DATABASE_NAME}; 
 CREATE USER IF NOT EXISTS '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_PASSWORD'; 
-GRANT ALL PRIVILEGES ON $DATABASE_NAME.* TO '$MYSQL_USER'@'%' ;
+GRANT ALL PRIVILEGES ON *.* TO '$MYSQL_USER'@'%' ;
 ALTER USER 'root'@'localhost' IDENTIFIED BY '$MYSQL_ROOT_PASSWORD';
 FLUSH PRIVILEGES;
 
