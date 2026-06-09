@@ -7,16 +7,16 @@ cd /srv/www/wordpress/
 sed -i  "s/listen = .*/listen = 9000/g" /etc/php/8.2/fpm/pool.d/www.conf;
 
 sleep 5
-# until mysqladmin -h mariadb -u$MYSQL_USER  ping   ; do 
-#    echo "hello "
-#     sleep 2
-#  done
-
+until mysqladmin -h mariadb -u$MYSQL_USER -p$MYSQL_PASSWORD ping   ; do 
+   echo "hello "
+    sleep 2
+ done
+#rm wp-config.php
+wp core download --allow-root 
 if [ ! -f wp-config.php ]; then
 
 #mv wp-config-sample.php wp-config.php 
 
-wp core download --allow-root 
 #sed -i -r "s/database_name_here/${DATABASE_NAME}/g" wp-config.php
 # sed -i -r "s/username_here/${MYSQL_USER}/g" wp-config.php
 # sed -i -r "s/password_here/${MYSQL_PASSWORD}/g" wp-config.php
@@ -32,7 +32,7 @@ wp config create --allow-root \
     --dbpass=$MYSQL_PASSWORD \
     --dbhost=mariadb:3306 \
     --path=/srv/www/wordpress
-
+cat wp-config.php 
 wp core install --allow-root \
     --url=zel-yama.42.fr \
     --title="the my wordpress site" \

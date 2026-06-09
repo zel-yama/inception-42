@@ -12,23 +12,33 @@
 # i thinks sql 
 # how to know  Check that mariadbd is running and that the socket: '/run/mysqld/mysqld.sock' exists!
 
-service  mariadb start;
 #/etc/mysql/mariadb.conf.d/50-server.cnf
+
+ 
+sleep 4
+echo "new " 
+
 if [ -d  "/var/lib/mysql/${DATABASE_NAME}" ];
 then
     echo "data base already created" 
 else
 
-mysql -e "CREATE DATABASE  IF NOT EXISTS  ${DATABASE_NAME}; "
-mysql -e "CREATE DATABASE mydb;"
-mysql -e "CREATE USER IF NOT EXISTS 'ZIKO'@'%' IDENTIFIED BY '12345'; "
-mysql -e "GRANT ALL PRIVILEGES ON mydb.* to 'ZIKO'@'%' ;"
-mysql -e "CREATE USER IF NOT EXISTS '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_PASSWORD'; "
-mysql -e "GRANT ALL PRIVILEGES ON '$DATABASE_NAME'.* TO '$MYSQL_USER'@'%' ;"  #THIS worng and indentified is exist
-mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '$MYSQL_ROOT_PASSWORD';"
-mysql -e "FLUSH PRIVILEGES;"
+service  mariadb start
+sleep 5
 
-mysqladmin -u${MYSQL_USER} -p${MYSQL_PASSWORD} shutdown # this require user root to turn of it 
+mysql << EOF
+DELETE FROM mysql.user WHERE user='';
+CREATE DATABASE  IF NOT EXISTS  ${DATABASE_NAME}; 
+CREATE USER IF NOT EXISTS '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_PASSWORD'; 
+GRANT ALL PRIVILEGES ON *.* TO '$MYSQL_USER'@'%' ;
+ALTER USER 'root'@'localhost' IDENTIFIED BY '$MYSQL_ROOT_PASSWORD';
+FLUSH PRIVILEGES;
+
+EOF
+
+service mariadb  stop
+#mysqladmin -u$MYSQL_USER -p${MYSQL_PASSWORD} shutdown # this require user root to turn of it 
 
 fi
 
+mysqld_safe --bind-address=0.0.0.0 --port=3306
