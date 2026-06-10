@@ -2,51 +2,40 @@
 #!/bin/bash
 
 cd /srv/www/wordpress/
-#my ussamption is the env don't put configuration or 
-# the error is 
+
 sed -i  "s/listen = .*/listen = 9000/g" /etc/php/8.2/fpm/pool.d/www.conf;
 
-sleep 5
+
 until mysqladmin -h mariadb -u$MYSQL_USER -p$MYSQL_PASSWORD ping   ; do 
    echo "hello "
     sleep 2
  done
-#rm wp-config.php
-wp core download --allow-root 
+
 if [ ! -f wp-config.php ]; then
 
-#mv wp-config-sample.php wp-config.php 
+    wp core download --allow-root 
 
-#sed -i -r "s/database_name_here/${DATABASE_NAME}/g" wp-config.php
-# sed -i -r "s/username_here/${MYSQL_USER}/g" wp-config.php
-# sed -i -r "s/password_here/${MYSQL_PASSWORD}/g" wp-config.php
-# sed -i -r "s/localhost/mariadb:3306/g" wp-config.php
+    wp config create --allow-root \
+        --dbname=$DATABASE_NAME \
+        --dbuser=$MYSQL_USER \
+        --dbpass=$MYSQL_PASSWORD \
+        --dbhost=mariadb:3306 \
+        --path=/srv/www/wordpress
 
-# connection refused # wp-config-sample.php  
-# and  wp-config.ph is not create config wordpress is not correct 
-# echo "here create config " 
+    wp core install --allow-root \
+        --url=zel-yama.42.fr \
+        --title="the wordpress site" \
+        --admin_email=$EMAIL_USER_WORDPRESS \
+        --admin_user=$WORDPRESS_ADMIN_USER_NAME \
+        --admin_password=$WORDPRESS_PASSWORD \
+        --path=/srv/www/wordpress
 
-wp config create --allow-root \
-    --dbname=$DATABASE_NAME \
-    --dbuser=$MYSQL_USER \
-    --dbpass=$MYSQL_PASSWORD \
-    --dbhost=mariadb:3306 \
-    --path=/srv/www/wordpress
-cat wp-config.php 
-wp core install --allow-root \
-    --url=zel-yama.42.fr \
-    --title="the my wordpress site" \
-    --admin_email=$EMAIL_USER_WORDPRESS \
-    --admin_user=$WORDPRESS_ADMIN_USER_NAME \
-    --admin_password=$WORDPRESS_PASSWORD \
-    --path=/srv/www/wordpress
-
-wp user create --allow-root \
-    $WORDPRESS_USER \
-    $WORDPRESS_EMAIL_USER \
-    --role=editor \
-    --user_pass=$WORDPRESS_USER_PASSWORD \
-    --path=/srv/www/wordpress 
+    wp user create --allow-root \
+        $WORDPRESS_USER \
+        $WORDPRESS_EMAIL_USER \
+        --role=editor \
+        --user_pass=$WORDPRESS_USER_PASSWORD \
+        --path=/srv/www/wordpress 
 
 fi
 
