@@ -2,13 +2,6 @@
 
 
 
-
-#/etc/mysql/mariadb.conf.d/50-server.cnf
-
- 
-sleep 4
-echo "new " 
-
 if [ -d  "/var/lib/mysql/${DATABASE_NAME}" ];
 then
     echo "data base already created" 

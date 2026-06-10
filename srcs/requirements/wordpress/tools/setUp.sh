@@ -20,7 +20,7 @@ if [ ! -f wp-config.php ]; then
         --dbuser=$MYSQL_USER \
         --dbpass=$MYSQL_PASSWORD \
         --dbhost=mariadb:3306 \
-        --path=/srv/www/wordpress
+       
 
     wp core install --allow-root \
         --url=zel-yama.42.fr \
@@ -28,14 +28,14 @@ if [ ! -f wp-config.php ]; then
         --admin_email=$EMAIL_USER_WORDPRESS \
         --admin_user=$WORDPRESS_ADMIN_USER_NAME \
         --admin_password=$WORDPRESS_PASSWORD \
-        --path=/srv/www/wordpress
+
 
     wp user create --allow-root \
         $WORDPRESS_USER \
         $WORDPRESS_EMAIL_USER \
         --role=editor \
         --user_pass=$WORDPRESS_USER_PASSWORD \
-        --path=/srv/www/wordpress 
+       
 
 fi
 
