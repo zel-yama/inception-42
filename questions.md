@@ -23,6 +23,8 @@
 - What happens when you run docker run?
 - What is port mapping (ports)?
 - what happens if you delete a container without a volume?
+- what is diff run apt inside runing contianer and in build of image ?
+
 
 # nignx 
 - What is SSL/TLS?

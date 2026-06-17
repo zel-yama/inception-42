@@ -33,6 +33,8 @@ services:
 
         build: srcs/requirements/nginx/
         
+        volumes:
+            - storage_wordpress:/srv/www/wordpress
         
         ports:
             - 443:443
