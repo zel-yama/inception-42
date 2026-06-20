@@ -1,6 +1,8 @@
  
 #!/bin/bash
 
+
+mkdir -p /srv/www/wordpress && chown -R www-data:www-data /srv/www/wordpress
 cd /srv/www/wordpress/
 
 sed -i  "s/listen = .*/listen = 9000/g" /etc/php/8.2/fpm/pool.d/www.conf;
@@ -24,7 +26,7 @@ if [ ! -f wp-config.php ]; then
 
     wp core install --allow-root \
         --url=zel-yama.42.fr \
-        --title="the wordpress site" \
+        --title="WordPress" \
         --admin_email=$EMAIL_USER_WORDPRESS \
         --admin_user=$WORDPRESS_ADMIN_USER_NAME \
         --admin_password=$WORDPRESS_PASSWORD \
@@ -36,7 +38,6 @@ if [ ! -f wp-config.php ]; then
         --role=editor \
         --user_pass=$WORDPRESS_USER_PASSWORD \
        
-
 fi
 
 exec php-fpm8.2 -F

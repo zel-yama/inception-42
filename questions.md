@@ -34,6 +34,8 @@
 - what is the resources that container use from host kernel 
 - what is spacial about this  Network: bridge host ipvlan macvlan null overlay 
 - every commands in you  are set ups for what and is the role of him and else packges 
+- how volume works and what diff between them and bind mount 
+
 # nignx 
 - What is SSL/TLS?
 - What is a reverse proxy?
