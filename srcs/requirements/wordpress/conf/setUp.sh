@@ -25,7 +25,7 @@ if [ ! -f wp-config.php ]; then
        
 
     wp core install --allow-root \
-        --url=zel-yama.42.fr \
+        --url=$DOMAIN_NAME \
         --title="WordPress" \
         --admin_email=$EMAIL_USER_WORDPRESS \
         --admin_user=$WORDPRESS_ADMIN_USER_NAME \
