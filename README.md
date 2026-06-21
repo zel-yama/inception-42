@@ -26,7 +26,8 @@ It introduces container management, networking between services, persistent stor
 ### nginx 
 - https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-plus/
 - https://www.youtube.com/watch?v=j9QmMEWmcfo
-- https://www.youtube.com/watch?v=AlE5X1NlHgg 
+- https://www.youtube.com/watch?v=AlE5X1NlHgg
+- https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-nginx-in-ubuntu-16-04 
 
 
 ### mariadb 
@@ -35,6 +36,8 @@ It introduces container management, networking between services, persistent stor
 
 ### docker 
 - https://docs.docker.com/reference/compose-file/
+- https://dev.to/doziestar/a-comprehensive-guide-to-docker-volumes-4d9h
+
 
 
 **AI usage** 

@@ -23,5 +23,3 @@
 **How to check if services are running?**
 
 - docker ps 
-
-
