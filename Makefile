@@ -1,9 +1,9 @@
 
 up:
-	docker compose up -d 
+	cd srcs && docker compose up -d 
 down:
-	docker compose down 
+	cd srcs && docker compose down 
 build:
-	docker compose build 
+	cd srcs && docker compose build 
 clean: 
-	docker compose down  -v
+	cd srcs && docker compose down  -v

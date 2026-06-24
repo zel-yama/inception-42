@@ -27,7 +27,7 @@ if [ ! -f wp-config.php ]; then
     wp core install --allow-root \
         --url=$DOMAIN_NAME \
         --title="WordPress" \
-        --admin_email=$EMAIL_USER_WORDPRESS \
+        --admin_email=$EMAIL_ADMIN_WORDPRESS \
         --admin_user=$WORDPRESS_ADMIN_USER_NAME \
         --admin_password=$WORDPRESS_PASSWORD \
 

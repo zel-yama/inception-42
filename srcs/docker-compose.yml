@@ -1,7 +1,7 @@
 
 services:
     mariadb:
-        build: srcs/requirements/mariadb/
+        build: requirements/mariadb/
         restart: always
     
         container_name: mariadb
@@ -13,7 +13,7 @@ services:
             - inception
     
     wordpress:
-        build: srcs/requirements/wordpress/
+        build: requirements/wordpress/
         container_name: wordpress
     
     
@@ -31,7 +31,7 @@ services:
     nginx:
         container_name: nginx
 
-        build: srcs/requirements/nginx/
+        build: requirements/nginx/
         
         volumes:
             - storage_wordpress:/srv/www/wordpress
