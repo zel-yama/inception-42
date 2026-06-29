@@ -21,7 +21,7 @@ EOF
 
  
 
-fi
 service mariadb  stop
+fi
 
-mysqld_safe --bind-address=0.0.0.0 --port=3306
+mysqld_safe   --bind-address=0.0.0.0 --port=3306

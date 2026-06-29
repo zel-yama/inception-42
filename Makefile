@@ -2,7 +2,7 @@
 up:
 	mkdir -p /home/zel-yama/data/mariadb
 	mkdir -p /home/zel-yama/data/wordpress
-	cd srcs && docker compose up 
+	cd srcs && docker compose up -d
 down:
 	cd srcs && docker compose down 
 build:
