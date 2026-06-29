@@ -17,6 +17,6 @@ RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli
 
 COPY ./tools/setUp.sh /
 
-CMD ["bash",  "./setUp.sh"]
+ENTRYPOINT ["bash",  "./setUp.sh"]
 
 

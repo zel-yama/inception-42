@@ -6,7 +6,7 @@ COPY tools/set.sh /
 
 RUN chmod +x set.sh 
 
-CMD ["./set.sh"]
+ENTRYPOINT ["./set.sh"]
 
 
 
